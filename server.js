@@ -36,7 +36,10 @@ app.get("/api/notes", (req,res) => {
 });
 // setting up api post rout
 app.post("/api/notes", (req, res) => {
-    let newNote = req.body;
+    const newNote = req.body;
+
+    notes.push(newNote);
+
 } );
 });
 
