@@ -7,17 +7,23 @@ const path = require('path');
 const app = express();
 const PORT = process.env.Port || 3000;
 
-// sets up express app for data parsing
-app.use(express.urlencoded({extended: true}))
-app.use(express.json());
-app.use(express.static(path.join(__dirname, '/public')));
-
-//Routs
 fs.readFile("db/db.json", "utf8", (err, data) => {
     if (err) throw err;
-    
-});
-app.get('/', (req,res) => {
+
+    const notes = JSON.parse(data);
+
+    console.log("this is the notes" + notes);
+
+// sets up express app for data parsing
+    app.use(express.urlencoded({extended: true}))
+    app.use(express.json());
+    app.use(express.static(path.join(__dirname, '/public')));
+
+//Routs
+
+
+//need to ask to make sure it is *
+app.get('*', (req,res) => {
 	res.sendFile(path.join(__dirname, './public/index.html'));
 });
 
@@ -32,5 +38,6 @@ app.get("/api/notes", (req,res) => {
 app.post("/api/notes", (req, res) => {
     let newNote = req.body;
 } );
+});
 
 app.listen(PORT, () => console.log(`App listening on PORT ${PORT}`));
