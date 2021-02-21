@@ -13,7 +13,10 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, '/public')));
 
 //Routs
-
+fs.readFile("db/db.json", "utf8", (err, data) => {
+    if (err) throw err;
+    
+});
 app.get('/', (req,res) => {
 	res.sendFile(path.join(__dirname, './public/index.html'));
 });
