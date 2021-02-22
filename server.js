@@ -5,7 +5,7 @@ const path = require('path');
 
 // initialize express app
 const app = express();
-const PORT = process.env.Port || 3000;
+const PORT = process.env.PORT || 3000;
 
 
 // sets up express app for data parsing
@@ -46,7 +46,10 @@ app.post("/api/notes", (req, res) => {
 
     res.json(newNote);
 });
-fs.writeFileSync("db/db.json",JSON.stringify(theNotes));
-});
+//takes the notes, stringify them and writes the notes in db.json.
+ //fs.writeFile("db/db.json",JSON.stringify(theNotes), err => {
+   //  if (err) throw err;
+ //});
+//});
 
 app.listen(PORT, () => console.log(`App listening on PORT ${PORT}`));
