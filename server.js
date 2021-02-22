@@ -21,12 +21,12 @@ fs.readFile("db/db.json", "utf8", (err, data) => {
 // Parses TheNotes as a string and returns ad a object
     const theNotes = JSON.parse(data);
 
-    console.log("this is the notes" + theNotes);
+    console.log("this is the notes: " + theNotes);
 
 //need to ask to make sure it is *
 // Routs
 
-app.get('*', (req,res) => {
+app.get('/', (req,res) => {
 	res.sendFile(path.join(__dirname, '/public/index.html'));
 });
 
@@ -37,7 +37,7 @@ app.get('/notes', (req,res) => {
 app.get("/api/notes", (req,res) => {
     res.json(theNotes);
 });
-// setting up api post rout
+
 app.post("/api/notes", (req, res) => {
     const newNote = req.body;
 
@@ -46,7 +46,7 @@ app.post("/api/notes", (req, res) => {
 
     res.json(newNote);
 });
-
+fs.writeFileSync("db/db.json",JSON.stringify(theNotes));
 });
 
 app.listen(PORT, () => console.log(`App listening on PORT ${PORT}`));
