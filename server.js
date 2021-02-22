@@ -35,7 +35,7 @@ app.get('/notes', (req,res) => {
 });
 
 app.get("/api/notes", (req,res) => {
-    res.json(notes);
+    res.json(theNotes);
 });
 // setting up api post rout
 app.post("/api/notes", (req, res) => {
