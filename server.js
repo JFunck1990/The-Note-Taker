@@ -21,7 +21,7 @@ fs.readFile("db/db.json", "utf8", (err, data) => {
 // Parses TheNotes as a string and returns ad a object
     const theNotes = JSON.parse(data);
 
-    console.log("this is the notes" + notes);
+    console.log("this is the notes" + theNotes);
 
 //need to ask to make sure it is *
 // Routs
