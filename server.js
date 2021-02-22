@@ -47,9 +47,9 @@ app.post("/api/notes", (req, res) => {
     res.json(newNote);
 });
 //takes the notes, stringify them and writes the notes in db.json.
- //fs.writeFile("db/db.json",JSON.stringify(theNotes), err => {
-   //  if (err) throw err;
- //});
+ fs.writeFile("db/db.json",JSON.stringify(theNotes), err => {
+     if (err) throw err;
+ });
 });
 
 app.listen(PORT, () => console.log(`App listening on PORT ${PORT}`));
