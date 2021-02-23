@@ -60,6 +60,10 @@ fs.writeFile("db/db.json",JSON.stringify(theNotes), err => {
     res.json(newNote);
 });
 
+app.get("/api/notes/:id", (req,res) =>{
+    res.json(theNotes[req.params.id]);
+});
+
 app.delete("/api/notes/:id", (req,res) => {
     let id = req.params.id;
     console.log(id);
