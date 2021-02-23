@@ -2,6 +2,11 @@
 const express = require("express");
 const fs = require("fs");
 const path = require('path');
+let theNotes;
+//https://github.com/uuidjs/uuid#deep-requires-now-deprecated
+//https://stackoverflow.com/questions/23327010/how-to-generate-unique-id-with-node-js
+const { v4: uuidv4 } = require('uuid');
+console.log("this is uuid: " + uuidv4());
 
 // initialize express app
 const app = express();
@@ -9,9 +14,9 @@ const PORT = process.env.PORT || 3000;
 
 
 // sets up express app for data parsing
-    app.use(express.urlencoded({extended: true}))
-    app.use(express.json());
-    app.use(express.static(path.join(__dirname, '/public')));
+app.use(express.urlencoded({extended: true}))
+app.use(express.json());
+app.use(express.static(path.join(__dirname, '/public')));
 
 
 //reading the db.json file
@@ -19,10 +24,10 @@ fs.readFile("db/db.json", "utf8", (err, data) => {
     if (err) throw err;
 
 // Parses TheNotes as a string and returns ad a object
-    const theNotes = JSON.parse(data);
+    theNotes = JSON.parse(data);
 
     console.log("this is the notes: " + theNotes);
-
+});
 //need to ask to make sure it is *
 // Routs
 
@@ -39,9 +44,14 @@ app.get("/api/notes", (req,res) => {
 });
 
 app.post("/api/notes", (req, res) => {
-    const newNote = req.body;
-
+    const newNote = {
+        title: req.body.title,
+        text: req.body.text,
+        id: uuidv4()
+    };
     theNotes.push(newNote);
+console.log("This is newNote" + newNote);
+
 //takes the notes, stringify them and writes the notes in db.json.
 fs.writeFile("db/db.json",JSON.stringify(theNotes), err => {
     if (err) throw err;
@@ -50,7 +60,17 @@ fs.writeFile("db/db.json",JSON.stringify(theNotes), err => {
     res.json(newNote);
 });
 
+app.delete("/api/notes/:id", (req,res) => {
+    var id = req.params.id;
+    console.log(id);
+    var t = theNotes.filter((n => n.id !== id))
+    console.log("Filtered notes: "+JSON.stringify(t));
 
-});
+    fs.writeFile("db/db.json",JSON.stringify(t), err => {
+        if (err) throw err;
+    });
+
+    res.json(t);
+})
 
 app.listen(PORT, () => console.log(`App listening on PORT ${PORT}`));
