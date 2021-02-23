@@ -61,9 +61,9 @@ fs.writeFile("db/db.json",JSON.stringify(theNotes), err => {
 });
 
 app.delete("/api/notes/:id", (req,res) => {
-    var id = req.params.id;
+    let id = req.params.id;
     console.log(id);
-    var t = theNotes.filter((n => n.id !== id))
+    let t = theNotes.filter((n => n.id !== id))
     console.log("Filtered notes: "+JSON.stringify(t));
 
     fs.writeFile("db/db.json",JSON.stringify(t), err => {
