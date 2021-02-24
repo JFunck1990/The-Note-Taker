@@ -7,7 +7,6 @@ by: Jack Funck
  - [ Instructions. ](#instr)
  - [Technologies.](#tc)
  - [Dependencies](#dep)
- - [Tests.](#test)
  - [ Video. ](#video)
  - [Screen-Shots.](#sc)
 
@@ -25,8 +24,11 @@ Run this command in your Command line
 ```
 When it says App Listening on PORT 3000
 ```
-* Type in localhost:3000/ and you will be brought to the home page
-* 
+* Type in localhost:3000/ in the browser and you will be brought to the home page.
+* Click get stattes and you will bought to localhost:3000/notes.
+* Enter a note title and below enter your notes and hit the save Icon and your notes will be saved.
+* If you are done or dont want your notes hit the trash can icon to delete.
+* If you type in localhost:3000/api/notes in the browser you will be bought to your array of objects.
 
 <a name="tc"></a>
 ## Technologies Used
@@ -37,23 +39,24 @@ When it says App Listening on PORT 3000
 <a name="dep"></a>
 # Dependencies
 * fs
-* jest
+* express
 * inquirer
+* uuid (gives each note a unique id)
 
-<a name="test"></a>
-# Tests
 <img src="./images/passTest.png">
 
 <a name="video"></a>
 # Video of how it works.
 > If you click GIF you will be navigated to YouTube.
 
-[![Team Profile Generator in use](https://j.gifs.com/lxzNor.gif)](https://youtu.be/DGZz-zE3pP0)
+[![Note Taker](https://gph.is/g/4oWDr9m)](https://youtu.be/f-eAdCKbS6o)
 
 
 
 <a name="sc"></a>
 # Screen Shots
-<img src="images/teamProfile.png">
-
+### Home
+<img src="Images/noteHome.png">
+### Notes
+<img src="Images/noteNotes.png">
 
