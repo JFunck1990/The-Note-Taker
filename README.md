@@ -49,7 +49,7 @@ When it says App Listening on PORT 3000
 # Video of how it works.
 > If you click GIF you will be navigated to YouTube.
 
-[![Note Taker](https://gph.is/g/4oWDr9m)](https://youtu.be/f-eAdCKbS6o)
+[![Note Taker](https://media.giphy.com/media/EUhCh1QqkLfBQqvfXc/giphy.gif)](https://youtu.be/f-eAdCKbS6o)
 
 
 
