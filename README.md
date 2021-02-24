@@ -50,7 +50,7 @@ When it says App Listening on PORT 3000
 
 <a name="video"></a>
 # Video of how it works.
-> If you click GIF you will be navigated to YouTube.
+> If you click GIF you will be navigated to YouTube for a full-video.
 
 [![Note Taker](https://media.giphy.com/media/EUhCh1QqkLfBQqvfXc/giphy.gif)](https://youtu.be/f-eAdCKbS6o)
 
