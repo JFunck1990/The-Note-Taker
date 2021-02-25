@@ -25,7 +25,9 @@ This is a note taking aplication that allows you to save notes with a title and 
 ## Instructions
 Run this command in your Command line
 ```
-When it says App Listening on PORT 3000
+Nodemon server.js
+or
+node server.js
 ```
 * Type in localhost:3000/ in the browser and you will be brought to the home page.
 * Click get stattes and you will bought to localhost:3000/notes.
