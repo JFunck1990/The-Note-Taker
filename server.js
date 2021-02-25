@@ -39,10 +39,16 @@ app.get('/notes', (req,res) => {
 	res.sendFile(path.join(__dirname, 'public/notes.html'));
 });
 
-app.get("/api/notes", (req,res) => {
-    res.json(theNotes);
-});
-
+app.get("/api/notes", (req, res) => {
+    fs.readFile("db/db.json", "utf8", (err, data) => {
+      if (err) throw err;
+      // Parses TheNotes as a string and returns ad a object
+      theNotes = JSON.parse(data);
+      console.log("this is the notes: " + theNotes);
+      res.json(theNotes);
+    });
+  });
+  
 app.post("/api/notes", (req, res) => {
     const newNote = {
         title: req.body.title,
@@ -59,6 +65,7 @@ fs.writeFile("db/db.json",JSON.stringify(theNotes), err => {
 
     res.json(newNote);
 });
+
 
 app.get("/api/notes/:id", (req,res) =>{
     res.json(theNotes[req.params.id]);
